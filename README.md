@@ -3,7 +3,7 @@
 
 [Repl.it demo here!](https://quotes-game.chrispinkney.repl.run) 
 
-A quotes-based guessing game filled with data pulled from the a friendly scraping site.
+A quotes-based guessing game filled with data pulled from a friendly scraping site.
 
 The player has four guesses to figure out which famous person said the quote randomly selected from their website.
 
