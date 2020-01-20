@@ -26,7 +26,7 @@ in your terminal (must have Python 3 installed). The provided csv_scraper_quotes
 
 offline_csv_web_scraper.py is used to download a quote database to your current working directory.
 
-####quotes_game.py is the online game's source.
+quotes_game.py is the online game's source.
 
 ## Technology
 The game is written in Python along with the Requests library to pull the data, and the Beautiful Soup library to scrape the information provided by [http://quotes.toscrape.com](http://quotes.toscrape.com/).
