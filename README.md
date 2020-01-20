@@ -16,8 +16,10 @@ Simply download (or git clone the repo) both
 
 and run 
 
->mkdir quotes
+> mkdir quotes
+
 > cd quotes
+
 > python quotes_game_with_csv.py
 
 in your terminal. The provided csv_scraper_quotes.csv is up to date as of [20-Jan-2020](https://www.timeanddate.com/date/durationresult.html?m1=1&d1=20&y1=2020&m2=1&d2=20&y2=2020&ti=on).
