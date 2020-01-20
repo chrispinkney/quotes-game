@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from random import choice
+from termcolor import colored
 #from time import sleep
 
 BASE_URL = "http://quotes.toscrape.com"
@@ -32,23 +33,23 @@ def start_game(quotes):
     remaining_guesses = 4
     quote = choice(quotes)
 
-    print("\nHere's a quote: " + quote["text"] + "\n")
+    print("\nHere's a quote: \n" + colored(quote["text"], color="green") + "\n")
 
     while guess.lower() != quote["author"].lower() and remaining_guesses > 0:
-        guess = input(f"You have {remaining_guesses} guesses remaining. Who said this quote?: ")
+        guess = input(f"You have {remaining_guesses} guesses remaining. Who said this?: ")
         if guess.lower() == quote["author"].lower():
-            print("YOU WIN!")
+            print(colored("\nYOU WIN!\n", color="blue"))
             break
         remaining_guesses -= 1
         print_hint(quote, remaining_guesses)
 
     again = ''
     while again.lower() not in ('y', 'yes', 'n', 'no'):
-        again = input("Would you like to play again (y/n)? ")
+        again = input("Would you like to play again? Y/N ")
     if again.lower() in ('yes', 'y'):
         return start_game(quotes) #Calling yourself
     else:
-        print("OK, GOODBYE!")
+        print("\nOK, GOODBYE!")
 
 
 def print_hint(quote, remaining_guesses):
@@ -57,14 +58,14 @@ def print_hint(quote, remaining_guesses):
         soup = BeautifulSoup(res.text, "html.parser")
         birth_date = soup.find(class_="author-born-date").get_text()
         birth_place = soup.find(class_="author-born-location").get_text()
-        print(f"Here's a hint.. The author was born on {birth_date} {birth_place}")
+        print(f"\nHere's a hint... The author was born on {birth_date} {birth_place}.\n")
     elif remaining_guesses == 2:
-        print(f"Here's a hint.. The author's first name starts with: {quote['author'][0]}")
+        print(f"\nHere's a hint... The author's first name starts with: {quote['author'][0]}.\n")
     elif remaining_guesses == 1:
         last_initial = quote["author"].split(" ")[1][0]
-        print(f"Here's a hint.. The author's last name starts with: {last_initial}")
+        print(f"\nHere's a hint... The author's last name starts with: {last_initial}.\n")
     else:
-        print(f"Sorry you ran out of guesses. The answer was {quote['author']}")
+        print(colored(f"\nSorry, you ran out of guesses. The answer was {quote['author']}\n", color="red"))
 
 
 #Running the game
